@@ -9,7 +9,6 @@ class Solution:
                 curr = board[i][j]
                 if board[i][j] != '.':
                     k = (i // 3) * 3 + j //3
-
                     if curr not in rows[i]:
                         rows[i].add(curr)
                     else:
@@ -19,9 +18,9 @@ class Solution:
                         cols[j].add(curr)
                     else:
                         return False
+                    
                     if curr not in sub[k]:
                         sub[k].add(curr)
                     else:
                         return False
         return True
-
