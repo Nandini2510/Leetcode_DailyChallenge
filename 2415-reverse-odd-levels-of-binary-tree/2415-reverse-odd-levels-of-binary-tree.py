@@ -5,15 +5,22 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-
-    def reverseOddLevels(self,  root: Optional[TreeNode]) -> Optional[TreeNode]:
-        def dfs(count, root1 ,root2):
-            if root1 is None or root2 is None:
-                return root
-            if count % 2 != 0:
-                if root.left is not None or root.right is not None:
-                    root1.val, root2.val = root2.val, root1.val
-            dfs(count + 1, root1.left, root2.right)
-            dfs(count + 1, root1.right, root2.left)
-            return root
-        return dfs(1, root.left, root.right)
+    def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return
+        queue = [root]
+        level = 0
+        while queue:
+            level += 1
+            temp = []
+            for i in queue:
+                if i.left:
+                    temp.append(i.left)
+                if i.right:
+                    temp.append(i.right)
+            if level % 2 != 0:
+                l = len(temp)
+                for i in range(l // 2):
+                    temp[i].val, temp[l-i-1].val = temp[l-i-1].val, temp[i].val
+            queue = temp
+        return root
