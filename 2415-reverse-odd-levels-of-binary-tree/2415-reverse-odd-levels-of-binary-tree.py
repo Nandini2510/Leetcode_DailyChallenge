@@ -7,7 +7,7 @@
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
-            return
+            return 
         queue = [root]
         level = 0
         while queue:
