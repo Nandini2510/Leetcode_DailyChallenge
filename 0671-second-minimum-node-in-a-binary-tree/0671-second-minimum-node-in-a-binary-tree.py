@@ -19,6 +19,7 @@ class Solution:
 
         dfs(root)
         ans = list(ans)
+        ans.sort()
         if len(ans) == 1:
             return -1
         else:
