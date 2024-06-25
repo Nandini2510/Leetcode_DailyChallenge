@@ -8,14 +8,14 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         ans = root
-        def dfs(curr, minEl, maxEl):
+
+        def dfs(root, minVal, maxVal):
             nonlocal ans
-            if curr is None:
-                return
-            if p.val >= minEl and q.val <= maxEl and q.val >= minEl and p.val <= maxEl:
-                ans = curr
-            dfs(curr.left, minEl, curr.val - 1)
-            dfs(curr.right, curr.val + 1, maxEl)   
-        
-        dfs(root,float("-inf"), float("inf"))
+            if root is None:
+                return 
+            if minVal <= p.val and p.val <= maxVal and minVal <= q.val and q.val <= maxVal:
+                ans = root
+            dfs(root.left, minVal, root.val - 1)
+            dfs(root.right, root.val + 1, maxVal)
+        dfs(root, float("-inf"), float("inf"))
         return ans
