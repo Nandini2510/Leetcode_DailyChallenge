@@ -13,13 +13,13 @@ class Solution:
                     flowers = 0
             return bouquets >= m
 
+        if len(bloomDay) < m * k:
+            return -1
         left, right = 1, max(bloomDay)
-        res = -1
-        while left <= right:
-            mid = (left + right) // 2
+        while left < right:
+            mid = left + (right - left) // 2
             if feasible(mid):
-                res = mid
-                right = mid - 1
+                right = mid
             else:
                 left = mid + 1
-        return res
+        return left
