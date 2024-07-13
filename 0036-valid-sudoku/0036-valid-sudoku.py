@@ -1,26 +1,17 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        rows = [set() for i in range(9)]
-        cols = [set() for i in range(9)]
-        sub = [set() for i in range(9)]
+        m, n = len(board), len(board[0])
+        rowMap = defaultdict(set)
+        colMap = defaultdict(set)
+        blockMap = defaultdict(set)
 
-        for i in range(9):
-            for j in range(9):
-                curr = board[i][j]
-                if board[i][j] != '.':
-                    k = (i // 3) * 3 + j //3
-                    if curr not in rows[i]:
-                        rows[i].add(curr)
-                    else:
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] != ".":
+                    if board[i][j] in rowMap[i] or board[i][j] in colMap[j] or board[i][j] in blockMap[(i // 3, j // 3)]:
                         return False
-                    
-                    if curr not in cols[j]:
-                        cols[j].add(curr)
                     else:
-                        return False
-                    
-                    if curr not in sub[k]:
-                        sub[k].add(curr)
-                    else:
-                        return False
+                        rowMap[i].add(board[i][j])
+                        colMap[j].add(board[i][j])
+                        blockMap[(i // 3, j // 3)].add(board[i][j])
         return True
