@@ -4,13 +4,14 @@ class Solution:
         maxL = height[i]
         maxR = height[j]
         res = 0
+
         while i < j:
             if maxL <= maxR:
-                i = i+1
+                i += 1
                 maxL = max(maxL, height[i])
                 res += maxL - height[i]
             else:
-                j = j - 1
+                j -= 1
                 maxR = max(maxR, height[j])
                 res += maxR - height[j]
         return res
