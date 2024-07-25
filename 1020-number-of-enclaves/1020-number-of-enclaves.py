@@ -6,7 +6,7 @@ class Solution:
         def dfs(i, j, m, n):
             if i < 0 or i >=m or j < 0 or j >=n or grid[i][j] != 1:
                 return
-            grid[i][j] = 2
+            grid[i][j] = -1
             dfs(i + 1, j, m, n)
             dfs(i - 1, j, m, n)
             dfs(i, j + 1, m, n)
@@ -14,7 +14,7 @@ class Solution:
         
         for i in range(m):
             for j in range(n):
-                if (i ==0 or j == 0 or i == m or j == n):
+                if grid[i][j] == 1 and (i ==0 or j == 0 or i == m - 1 or j == n - 1):
                     dfs(i, j, m, n)
         
         for i in range(m):
