@@ -1,8 +1,16 @@
 class Solution:
     def compress(self, chars: List[str]) -> int:
-        s = uniqChar = ""
+        uniqChar = ""
         count = 0
         ans = 0
+        def write_chars(char, count):
+            nonlocal ans
+            chars[ans] = uniqChar
+            ans += 1
+            if count > 1:
+                for c in str(count):
+                    chars[ans] = c
+                    ans += 1
         for i in range(len(chars)):
             if uniqChar == "":
                 uniqChar = chars[i]
@@ -10,19 +18,8 @@ class Solution:
             elif uniqChar == chars[i]:
                 count += 1
             else:
-                chars[ans] = uniqChar
-                ans += 1
-                if count > 1:
-                    for c in str(count):
-                        chars[ans] = c
-                        ans += 1
+                write_chars(uniqChar, count)
                 count = 1
                 uniqChar = chars[i]
-        chars[ans] = uniqChar
-        ans += 1
-        if count > 1:
-            for c in str(count):
-                chars[ans] = c
-                ans += 1
-
+        write_chars(uniqChar, count)
         return ans
