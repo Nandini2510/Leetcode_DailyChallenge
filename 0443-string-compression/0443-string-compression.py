@@ -3,7 +3,7 @@ class Solution:
         uniqChar = ""
         count = 0
         ans = 0
-        def write_chars(char, count):
+        def write_chars(uniqChar, count):
             nonlocal ans
             chars[ans] = uniqChar
             ans += 1
