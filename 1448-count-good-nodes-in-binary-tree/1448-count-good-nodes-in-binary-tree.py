@@ -13,9 +13,11 @@ class Solution:
                 return 0
             nonlocal ans
             if root.val >= maxNode:
-                ans = ans + 1
+                ans += 1
                 maxNode = root.val
             dfs(root.left, maxNode)
             dfs(root.right, maxNode)
         dfs(root, float("-inf"))
         return ans
+
+        
