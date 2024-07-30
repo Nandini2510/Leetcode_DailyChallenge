@@ -12,8 +12,9 @@ class Solution:
             nonlocal ans
             if root is None:
                 return 0
-            dfs(root.left, curr + 1)
+            dfs(root.left, curr +  1)
             dfs(root.right, curr + 1)
             ans = max(ans, curr)
         dfs(root, 1)
         return ans
+        
