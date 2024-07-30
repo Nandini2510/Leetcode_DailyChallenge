@@ -9,6 +9,7 @@ class Solution:
         if root is None:
             return 0
         ans = 0
+
         def dfs(root):
             nonlocal ans
             if root is None:
@@ -19,3 +20,6 @@ class Solution:
             return 1 + max(lh, rh)
         dfs(root)
         return ans
+
+
+        
