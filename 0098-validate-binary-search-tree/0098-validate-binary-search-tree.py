@@ -9,14 +9,15 @@ class Solution:
         ans = True
 
         def dfs(root, minVal, maxVal):
-            if root is None:
-                return
             nonlocal ans
-            if root.val < minVal or root.val > maxVal:
+            if root is None:
+                return 
+            if minVal > root.val or root.val > maxVal:
                 ans = False
                 return
             dfs(root.left, minVal, root.val - 1)
             dfs(root.right, root.val + 1, maxVal)
-            
         dfs(root, float("-inf"), float("inf"))
         return ans
+
+        
