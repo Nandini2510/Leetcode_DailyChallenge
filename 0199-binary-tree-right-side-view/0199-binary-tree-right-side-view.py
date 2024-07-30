@@ -9,7 +9,8 @@ class Solution:
         if root is None:
             return []
         q = deque([root])
-        ans = []
+        res = []
+
         while q:
             sz = len(q)
             ds = []
@@ -17,11 +18,10 @@ class Solution:
                 node = q.popleft()
                 if node is not None:
                     ds.append(node.val)
-                if node.left:
+                if node and node.left:
                     q.append(node.left)
-                if node.right:
+                if node and node.right:
                     q.append(node.right)
-            ans.append(ds[-1])
-        return ans
-            
-
+            res.append(ds[-1])
+        return res
+        
