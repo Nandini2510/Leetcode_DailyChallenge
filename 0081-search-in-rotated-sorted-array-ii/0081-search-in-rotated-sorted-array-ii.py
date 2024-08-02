@@ -2,7 +2,7 @@ class Solution:
     def search(self, nums: List[int], target: int) -> bool:
         ind = 0
 
-        while ind < len(nums) - 1 and nums[ind] <= nums[ind + 1]:
+        while ind < len(nums) - 1 and nums[ind] < nums[ind + 1]:
             ind += 1
         if target >= nums[0]:
             x = bisect_left(nums, target, 0, ind)
