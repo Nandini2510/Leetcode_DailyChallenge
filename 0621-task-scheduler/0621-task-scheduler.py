@@ -4,7 +4,7 @@ class Solution:
         maxHeap = [-cnt for cnt in count.values()]
         heapq.heapify(maxHeap)
         time = 0
-        q = deque() #[-cnt, idleTime]
+        q = deque() # pairs of [-cnt, idleTime]
 
         while maxHeap or q:
             time += 1
@@ -16,4 +16,3 @@ class Solution:
                 heapq.heappush(maxHeap, q.popleft()[0])
         return time
                 
-        
