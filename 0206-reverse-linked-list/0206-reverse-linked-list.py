@@ -9,10 +9,10 @@ class Solution:
             return None
         curr = head
         prev = None
-        while(curr):
+
+        while curr:
             temp = curr.next
             curr.next = prev
             prev = curr
             curr = temp
         return prev
-        
