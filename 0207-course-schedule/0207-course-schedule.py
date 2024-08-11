@@ -1,27 +1,24 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         adjList = defaultdict(list)
-
+        vis = set()
         for crs, pre in prerequisites:
             adjList[crs].append(pre)
         
-        vis = set()
-
         def dfs(crs):
-            # detected loop
             if crs in vis:
                 return False
             if adjList[crs] == []:
                 return True
             vis.add(crs)
-            for pre in adjList[crs]:
-                if not dfs(pre):
+            for nei in adjList[crs]:
+                if not dfs(nei):
                     return False
             vis.remove(crs)
             adjList[crs] = []
             return True
         
-        for crs in range(numCourses):
-            if not dfs(crs):
+        for i in range(numCourses):
+            if not dfs(i):
                 return False
         return True
