@@ -11,15 +11,15 @@
 #         self.right = right
 class Solution:
     def isSubPath(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
-        def checkPath(head, root):
-            if not head:
+        def helper(list_node, tree_node):
+            if not list_node:
                 return True
-            if not root or head.val != root.val:
+            if not tree_node or list_node.val != tree_node.val:
                 return False
-            return checkPath(head.next, root.left) or checkPath(head.next, root.right)
+            return helper(list_node.next, tree_node.left) or helper(list_node.next, tree_node.right)
 
+        if helper(head, root):
+            return True
         if not root:
             return False
-        if checkPath(head, root):
-            return True
         return self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
