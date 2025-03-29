@@ -3,11 +3,12 @@ class Solution:
         ans = []
         mp = defaultdict(int)
 
-        for i in range(len(nums)):
+        for i in range(0, len(nums)):
             if target - nums[i] in mp:
                 ans.append(mp[target - nums[i]])
                 ans.append(i)
             else:
                 mp[nums[i]] = i
         return ans
+        
         
