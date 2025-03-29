@@ -8,10 +8,6 @@ class Solution:
             mp[nums[i]] += 1
         
         sorted_map = sorted(mp.items(), key=lambda item: item[1], reverse=True)
-        for key, v in sorted_map:
-            if k != 0:
-                ans.append(key)
-                k -= 1
-        return ans
+        return [item[0] for item in sorted_map[:k]]
 
         
