@@ -2,20 +2,27 @@ class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
 
-        for i in range(len(s)):
-            if (s[i] == '(' or s[i] == '{' or s[i] == '['):
-                stack.append(s[i])
+        for ch in s:
+            if ch == '(' or ch == '{' or ch == '[':
+                stack.append(ch)
             else:
                 if stack:
-                    ch = stack[-1]
-                    if (ch == '(' and s[i] == ')') or (ch == '{' and s[i] == '}') or (ch == '[' and s[i] == ']'):
+                    if (stack[-1] == '{' and ch == '}') or (stack[-1] == '[' and ch == ']') or (stack[-1] == '(' and ch == ')'):
                         stack.pop()
                     else:
                         return False
-                
                 else:
                     return False
-        if not stack:
-            return True
-        else:
-            return False 
+                
+        return True if not stack else False
+
+
+
+'''
+1. Create a stack (list)
+2. If open bracket -> push into stack
+3. If close bracket -> pop from top of stack and check corresponding closing bracket
+4. if stack is empty 
+'''
+        
+        
