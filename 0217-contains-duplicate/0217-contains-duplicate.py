@@ -1,11 +1,8 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        mp = defaultdict(int)
-
+        hashmap = defaultdict(int)
         for i in range(len(nums)):
-            if nums[i] in mp:
+            hashmap[nums[i]]+=1
+            if hashmap[nums[i]] > 1:
                 return True
-            else:
-                mp[nums[i]] += 1
         return False
-        
